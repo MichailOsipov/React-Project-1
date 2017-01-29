@@ -10,6 +10,7 @@ module.exports = {
 		path: __dirname + '/public',
         filename: 'bundle.js'
     },
+    devtool: NODE_ENV == 'development' ? 'source-map' : null,
     module: {
         loaders: [
             {
