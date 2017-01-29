@@ -17,7 +17,7 @@ export default class Filter extends React.Component {
 		return (
 			<div className="filters">
 				<a href="#/All" onClick={this.handleFilterSet}>All</a>
-				<a href="#/Finished" onClick={this.handleFilterSet}>Finished</a>
+				<a href="#/Complete" onClick={this.handleFilterSet}>Complete</a>
 				<a href="#/Active" onClick={this.handleFilterSet}>Active</a>
 			</div>
 		);

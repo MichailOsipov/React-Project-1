@@ -21831,7 +21831,7 @@
 			_this.setStatus = _this.setStatus.bind(_this);
 			_this.deleteTask = _this.deleteTask.bind(_this);
 			_this.setFilter = _this.setFilter.bind(_this);
-			_this.state = { tasks: [], uniqueID: 1, filterType: "All" }; //FilterType: All, Finished, Active; Status: Complete, Active
+			_this.state = { tasks: [], uniqueID: 1, filterType: "All" }; //FilterType: All, Complete, Active; Status: Complete, Active
 			return _this;
 		}
 	
@@ -22033,7 +22033,7 @@
 				var filteredTasks = tasks.filter(function (task) {
 					if (_this2.props.filter == "All") return true;
 					if (_this2.props.filter == "Active" && task.status == "Active") return true;
-					if (_this2.props.filter == "Finished" && task.status == "Complete") return true;
+					if (_this2.props.filter == "Complete" && task.status == "Complete") return true;
 	
 					return false;
 				});
@@ -22183,8 +22183,8 @@
 					),
 					_react2.default.createElement(
 						'a',
-						{ href: '#/Finished', onClick: this.handleFilterSet },
-						'Finished'
+						{ href: '#/Complete', onClick: this.handleFilterSet },
+						'Complete'
 					),
 					_react2.default.createElement(
 						'a',

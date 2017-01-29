@@ -12,7 +12,7 @@ export default class ToDoList extends React.Component {
 		this.setStatus = this.setStatus.bind(this);
 		this.deleteTask = this.deleteTask.bind(this);
 		this.setFilter = this.setFilter.bind(this);
-		this.state = {tasks: [], uniqueID: 1, filterType: "All"}; //FilterType: All, Finished, Active; Status: Complete, Active
+		this.state = {tasks: [], uniqueID: 1, filterType: "All"}; //FilterType: All, Complete, Active; Status: Complete, Active
 	}
 	
 	addTask(text){

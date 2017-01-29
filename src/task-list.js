@@ -12,7 +12,7 @@ export default class TaskList extends React.Component {
 		const filteredTasks = tasks.filter((task)=>{
 			if(this.props.filter == "All") return true;			
 			if(this.props.filter == "Active" && task.status == "Active") return true;
-			if(this.props.filter == "Finished" && task.status == "Complete") return true;
+			if(this.props.filter == "Complete" && task.status == "Complete") return true;
 			
 			return false;
 		});
