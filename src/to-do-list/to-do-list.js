@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import AddTaskForm from './add-task-form.js';
-import TaskList from './task-list.js';
-import Filter from './filter.js';
+import AddTaskForm from 'add-task-form';
+import TaskList from 'task-list';
+import Filter from 'filter';
 
 export default class ToDoList extends React.Component {
 	constructor(props){

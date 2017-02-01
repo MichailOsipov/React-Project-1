@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './add-task-form.scss';
 
 export default class AddTaskForm extends React.Component {
 	constructor(props){
@@ -20,8 +21,8 @@ export default class AddTaskForm extends React.Component {
 	
 	render() {
 		return (
-			<form onSubmit={this.handleSubmit}>
-				<input type="text" value={this.state.value} onChange={this.handleChange} />
+			<form className="add-task" onSubmit={this.handleSubmit}>
+				<input className="add-task-input" type="text" value={this.state.value} onChange={this.handleChange} placeholder="What should be done?"/>
 				<input type="submit" value="Add" />
 			</form>
 		);

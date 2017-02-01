@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './filter.scss';
 
 export default class Filter extends React.Component {
 	constructor(props){

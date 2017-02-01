@@ -58,6 +58,8 @@
 	
 	var _toDoList2 = _interopRequireDefault(_toDoList);
 	
+	__webpack_require__(191);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	_reactDom2.default.render(_react2.default.createElement(_toDoList2.default, null), document.getElementById('root'));
@@ -21803,11 +21805,11 @@
 	
 	var _addTaskForm2 = _interopRequireDefault(_addTaskForm);
 	
-	var _taskList = __webpack_require__(185);
+	var _taskList = __webpack_require__(186);
 	
 	var _taskList2 = _interopRequireDefault(_taskList);
 	
-	var _filter = __webpack_require__(187);
+	var _filter = __webpack_require__(189);
 	
 	var _filter2 = _interopRequireDefault(_filter);
 	
@@ -21933,6 +21935,8 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
+	__webpack_require__(185);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21971,8 +21975,8 @@
 			value: function render() {
 				return _react2.default.createElement(
 					'form',
-					{ onSubmit: this.handleSubmit },
-					_react2.default.createElement('input', { type: 'text', value: this.state.value, onChange: this.handleChange }),
+					{ className: 'add-task', onSubmit: this.handleSubmit },
+					_react2.default.createElement('input', { className: 'add-task-input', type: 'text', value: this.state.value, onChange: this.handleChange, placeholder: 'What should be done?' }),
 					_react2.default.createElement('input', { type: 'submit', value: 'Add' })
 				);
 			}
@@ -21985,6 +21989,12 @@
 
 /***/ },
 /* 185 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22003,7 +22013,7 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _task = __webpack_require__(186);
+	var _task = __webpack_require__(187);
 	
 	var _task2 = _interopRequireDefault(_task);
 	
@@ -22054,7 +22064,7 @@
 	exports.default = TaskList;
 
 /***/ },
-/* 186 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22072,6 +22082,8 @@
 	var _reactDom = __webpack_require__(32);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	__webpack_require__(188);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22091,6 +22103,7 @@
 	
 			_this.handleChangeStatus = _this.handleChangeStatus.bind(_this);
 			_this.handleDelete = _this.handleDelete.bind(_this);
+			_this.getTextClass = _this.getTextClass.bind(_this);
 			return _this;
 		}
 	
@@ -22106,13 +22119,24 @@
 				this.props.deleteTask(this.props.reactId);
 			}
 		}, {
+			key: 'getTextClass',
+			value: function getTextClass() {
+				var initialClassName = "task-text-block";
+	
+				return this.props.status == 'Active' ? initialClassName : initialClassName + " line-through";
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
 					{ className: 'task' },
 					_react2.default.createElement('input', { type: 'button', onClick: this.handleChangeStatus, value: this.props.status == 'Active' ? 'set as Complete' : 'set as Active' }),
-					this.props.text,
+					_react2.default.createElement(
+						'div',
+						{ className: this.getTextClass() },
+						this.props.text
+					),
 					_react2.default.createElement('input', { type: 'button', onClick: this.handleDelete, value: 'Delete' })
 				);
 			}
@@ -22124,7 +22148,13 @@
 	exports.default = Task;
 
 /***/ },
-/* 187 */
+/* 188 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22142,6 +22172,8 @@
 	var _reactDom = __webpack_require__(32);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	__webpack_require__(190);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22199,6 +22231,18 @@
 	}(_react2.default.Component);
 	
 	exports.default = Filter;
+
+/***/ },
+/* 190 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 191 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);

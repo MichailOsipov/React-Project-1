@@ -1,0 +1,18 @@
+.task-text-block {
+   display: inline-block;
+   word-wrap: break-word;
+   width: 150px;
+   text-align: center;
+   margin-left: 20px;
+   margin-right: 20px;
+}
+.task > input {
+   width: 120px;
+}
+.task {
+	margin-bottom: 20px;
+	border-bottom: 2px;
+}
+.line-through {
+	text-decoration:line-through;
+}

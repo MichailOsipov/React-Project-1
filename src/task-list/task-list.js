@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Task from './task.js';
+import Task from 'task';
 
 export default class TaskList extends React.Component {
 	constructor(props){

@@ -15,8 +15,15 @@
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2"
   },
-    "scripts": {
-		"build": "./node_modules/.bin/webpack",
-        "server": "./node_modules/.bin/webpack-dev-server"
-    }
+  "scripts": {
+	"build": "./node_modules/.bin/webpack",
+    "server": "./node_modules/.bin/webpack-dev-server"
+  },
+  "browser": {
+	"to-do-list": "./src/to-do-list/to-do-list",
+	"task-list": "./src/task-list/task-list",
+	"task": "./src/task/task",
+	"filter": "./src/filter/filter",
+	"add-task-form": "./src/add-task-form/add-task-form"
+  }
 }
