@@ -1,10 +1,17 @@
 {
   "devDependencies": {
     "babel-core": "^6.21.0",
+    "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
     "css-loader": "^0.26.1",
+    "eslint": "^3.15.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-loader": "^1.6.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.9.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "node-sass": "^4.2.0",
     "react": "^15.4.2",
@@ -16,14 +23,14 @@
     "webpack-dev-server": "^1.16.2"
   },
   "scripts": {
-	"build": "./node_modules/.bin/webpack",
+    "build": "./node_modules/.bin/webpack",
     "server": "./node_modules/.bin/webpack-dev-server"
   },
   "browser": {
-	"to-do-list": "./src/to-do-list/to-do-list",
-	"task-list": "./src/task-list/task-list",
-	"task": "./src/task/task",
-	"filter": "./src/filter/filter",
-	"add-task-form": "./src/add-task-form/add-task-form"
+    "to-do-list": "./src/to-do-list/to-do-list",
+    "task-list": "./src/task-list/task-list",
+    "task": "./src/task/task",
+    "filter": "./src/filter/filter",
+    "add-task-form": "./src/add-task-form/add-task-form"
   }
 }
