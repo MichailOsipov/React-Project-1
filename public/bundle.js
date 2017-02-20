@@ -22031,22 +22031,46 @@
 		function TaskList(props) {
 			_classCallCheck(this, TaskList);
 	
-			return _possibleConstructorReturn(this, (TaskList.__proto__ || Object.getPrototypeOf(TaskList)).call(this, props));
+			var _this = _possibleConstructorReturn(this, (TaskList.__proto__ || Object.getPrototypeOf(TaskList)).call(this, props));
+	
+			_this.getVisibleTasks = _this.getVisibleTasks.bind(_this);
+			return _this;
 		}
 	
 		_createClass(TaskList, [{
+			key: 'getVisibleTasks',
+			value: function getVisibleTasks() {
+				switch (this.props.filter) {
+					case 'All':
+						return this.props.tasks; //сделай булеву переменную - complete
+					case 'Active':
+						return this.props.tasks.filter(function (t) {
+							return t.status == "Active";
+						});
+					case 'Complete':
+						return this.props.tasks.filter(function (t) {
+							return t.status == "Complete";
+						});
+				}
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				var _this2 = this;
 	
-				var tasks = this.props.tasks;
-				var filteredTasks = tasks.filter(function (task) {
-					if (_this2.props.filter == "All") return true;
-					if (_this2.props.filter == "Active" && task.status == "Active") return true;
-					if (_this2.props.filter == "Complete" && task.status == "Complete") return true;
+				//const tasks = this.props.tasks;
+				/*const filteredTasks = tasks.filter((task)=>{
+	   	//make switch
+	   	if(this.props.filter == "All") return true;			
+	   	if(this.props.filter == "Active" && task.status == "Active") return true; //make array.filter
+	   	if(this.props.filter == "Complete" && task.status == "Complete") return true;
+	   	
+	   			
+	   	
+	   	return false;
+	   });*/
 	
-					return false;
-				});
+				var filteredTasks = this.getVisibleTasks();
 				var taskItems = filteredTasks.map(function (task) {
 					return _react2.default.createElement(_task2.default, { key: task.id, reactId: task.id, text: task.text, status: task.status, setStatus: _this2.props.setStatus, deleteTask: _this2.props.deleteTask });
 				});

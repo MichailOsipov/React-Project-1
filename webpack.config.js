@@ -21,11 +21,11 @@ module.exports = {
                     presets: ['es2015', 'react']
                 }
             },
-			{
+			/*{
 			test: /\.js$/,
 			exclude: /node_modules/,
 			loaders: ['babel-loader', 'eslint-loader']
-			},
+			},*/
             {
                 test: /\.scss$/,
                 loader: ExtractTextPlugin.extract('style-loader', 'css-loader!resolve-url!sass-loader?sourceMap')
