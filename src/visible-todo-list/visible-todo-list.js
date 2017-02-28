@@ -30,10 +30,13 @@ const mapDispatchToTodoListProps = (dispatch) => {
 					type: 'TOGGLE_TODO',
 					id
 				});						
-			}/*,
-		onClickDelete = { id =>
-			this.props.deleteTodo(id); //изменим потом
-		}*/
+			},
+		onClickDelete: id => {
+				dispatch({
+					type: 'REMOVE_TODO',
+					id
+				});
+			}
 	};
 };
 

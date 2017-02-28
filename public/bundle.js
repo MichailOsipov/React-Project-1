@@ -21956,8 +21956,7 @@
 		}, {
 			key: 'handleSubmit',
 			value: function handleSubmit(event) {
-				//this.props.onSubmit(this.state.nextTodoId, this.state.value);
-				this.props.onSubmit(this.state.nextTodoId, this.input.value);
+				this.props.onSubmit(this.state.nextTodoId, this.state.value);
 	
 				this.setState(function (prevState) {
 					return {
@@ -21965,34 +21964,22 @@
 						nextTodoId: prevState.nextTodoId + 1
 					};
 				});
+	
+				event.preventDefault();
 			}
 		}, {
 			key: 'render',
 			value: function render() {
-				var _this2 = this;
-	
-				return (
-					/*<form className="add-todo" onSubmit={this.handleSubmit}>
-	    	<input 
-	    		className="add-todo-input" 
-	    		type="text" value={this.state.value} 
-	    		onChange={this.handleChange} 
-	    		placeholder="What should be done?"
-	    	/>
-	    	<input type="submit" value="Add" />
-	    </form>*/
-					_react2.default.createElement(
-						'div',
-						null,
-						_react2.default.createElement('input', { ref: function ref(node) {
-								_this2.input = node;
-							} }),
-						_react2.default.createElement(
-							'button',
-							{ onClick: this.handleSubmit },
-							'Add Todo'
-						)
-					)
+				return _react2.default.createElement(
+					'form',
+					{ className: 'add-todo', onSubmit: this.handleSubmit },
+					_react2.default.createElement('input', {
+						className: 'add-todo-input',
+						type: 'text', value: this.state.value,
+						onChange: this.handleChange,
+						placeholder: 'What should be done?'
+					}),
+					_react2.default.createElement('input', { type: 'submit', value: 'Add' })
 				);
 			}
 		}]);
@@ -24578,10 +24565,13 @@
 					type: 'TOGGLE_TODO',
 					id: id
 				});
-			} /*,
-	    onClickDelete = { id =>
-	    this.props.deleteTodo(id); //изменим потом
-	    }*/
+			},
+			onClickDelete: function onClickDelete(id) {
+				dispatch({
+					type: 'REMOVE_TODO',
+					id: id
+				});
+			}
 		};
 	};
 	
@@ -25093,6 +25083,11 @@
 				return _extends({}, state, {
 					completed: !state.completed
 				});
+			case 'REMOVE_TODO':
+				if (state.id !== action.id) {
+					return true;
+				}
+				return false;
 			default:
 				return state;
 		}
@@ -25107,6 +25102,10 @@
 				return [].concat(_toConsumableArray(state), [todoReducer(undefined, action)]);
 			case 'TOGGLE_TODO':
 				return state.map(function (todo) {
+					return todoReducer(todo, action);
+				});
+			case 'REMOVE_TODO':
+				return state.filter(function (todo) {
 					return todoReducer(todo, action);
 				});
 			default:

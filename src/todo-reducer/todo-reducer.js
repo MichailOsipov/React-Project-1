@@ -15,6 +15,11 @@ const todoReducer = (state, action) => {
 				...state,
 				completed: !state.completed
 			};
+		case 'REMOVE_TODO':
+			if (state.id !== action.id) {
+				return true;
+			}
+			return false;
 		default:
 			return state;
 	}       
@@ -29,6 +34,8 @@ const todosReducer = (state = [], action) => {
 			];
 		case 'TOGGLE_TODO':
 			return state.map(todo => todoReducer(todo, action));
+		case 'REMOVE_TODO':
+			return state.filter(todo => todoReducer(todo, action));
 		default:
 			return state;
 	}
