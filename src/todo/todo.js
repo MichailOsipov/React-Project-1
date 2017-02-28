@@ -10,7 +10,7 @@ export default class Todo extends React.Component {
 	//исправь тут
 	getTextClass() {
 		let initialClassName = "todo-text-block";		
-		return this.props.completed ? initialClassName : initialClassName + " line-through";
+		return !this.props.completed ? initialClassName : initialClassName + " line-through";
 	}
 	
 	render() {
@@ -19,7 +19,7 @@ export default class Todo extends React.Component {
 				<input 
 					type="button" 
 					onClick={this.props.onClickChangeStatus} 
-					value={this.props.completed ? 'set as Complete' : 'set as Active'}
+					value={!this.props.completed ? 'set as Complete' : 'set as Active'}
 				/>
 				<div 
 				className={this.getTextClass()}

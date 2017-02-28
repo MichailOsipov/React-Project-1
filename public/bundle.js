@@ -21956,28 +21956,43 @@
 		}, {
 			key: 'handleSubmit',
 			value: function handleSubmit(event) {
-				this.props.onSubmit(this.state.nextTodoId, this.state.value);
+				//this.props.onSubmit(this.state.nextTodoId, this.state.value);
+				this.props.onSubmit(this.state.nextTodoId, this.input.value);
 	
 				this.setState(function (prevState) {
 					return {
 						value: '',
-						nextTodoId: prevState.nextTodoId++
+						nextTodoId: prevState.nextTodoId + 1
 					};
 				});
 			}
 		}, {
 			key: 'render',
 			value: function render() {
-				return _react2.default.createElement(
-					'form',
-					{ className: 'add-todo', onSubmit: this.handleSubmit },
-					_react2.default.createElement('input', {
-						className: 'add-todo-input',
-						type: 'text', value: this.state.value,
-						onChange: this.handleChange,
-						placeholder: 'What should be done?'
-					}),
-					_react2.default.createElement('input', { type: 'submit', value: 'Add' })
+				var _this2 = this;
+	
+				return (
+					/*<form className="add-todo" onSubmit={this.handleSubmit}>
+	    	<input 
+	    		className="add-todo-input" 
+	    		type="text" value={this.state.value} 
+	    		onChange={this.handleChange} 
+	    		placeholder="What should be done?"
+	    	/>
+	    	<input type="submit" value="Add" />
+	    </form>*/
+					_react2.default.createElement(
+						'div',
+						null,
+						_react2.default.createElement('input', { ref: function ref(node) {
+								_this2.input = node;
+							} }),
+						_react2.default.createElement(
+							'button',
+							{ onClick: this.handleSubmit },
+							'Add Todo'
+						)
+					)
 				);
 			}
 		}]);
@@ -24738,7 +24753,7 @@
 			key: 'getTextClass',
 			value: function getTextClass() {
 				var initialClassName = "todo-text-block";
-				return this.props.completed ? initialClassName : initialClassName + " line-through";
+				return !this.props.completed ? initialClassName : initialClassName + " line-through";
 			}
 		}, {
 			key: 'render',
@@ -24749,7 +24764,7 @@
 					_react2.default.createElement('input', {
 						type: 'button',
 						onClick: this.props.onClickChangeStatus,
-						value: this.props.completed ? 'set as Complete' : 'set as Active'
+						value: !this.props.completed ? 'set as Complete' : 'set as Active'
 					}),
 					_react2.default.createElement(
 						'div',
@@ -25071,7 +25086,7 @@
 					completed: false
 				};
 			case 'TOGGLE_TODO':
-				if (todo.id !== action.id) {
+				if (state.id !== action.id) {
 					return state;
 				}
 	
@@ -25089,10 +25104,10 @@
 	
 		switch (action.type) {
 			case 'ADD_TODO':
-				return [].concat(_toConsumableArray(state), [todo(undefined, action)]);
+				return [].concat(_toConsumableArray(state), [todoReducer(undefined, action)]);
 			case 'TOGGLE_TODO':
 				return state.map(function (todo) {
-					return todo(t, action);
+					return todoReducer(todo, action);
 				});
 			default:
 				return state;

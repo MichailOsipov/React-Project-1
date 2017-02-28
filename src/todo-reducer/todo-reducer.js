@@ -7,7 +7,7 @@ const todoReducer = (state, action) => {
 				completed: false
 			};
 		case 'TOGGLE_TODO':
-			if (todo.id !== action.id) {
+			if (state.id !== action.id) {
 					return state;
 				}
 				
@@ -25,10 +25,10 @@ const todosReducer = (state = [], action) => {
 		case 'ADD_TODO':
 			return [
 				...state,
-				todo(undefined, action)
+				todoReducer(undefined, action)
 			];
 		case 'TOGGLE_TODO':
-			return state.map(todo => todo(t, action));
+			return state.map(todo => todoReducer(todo, action));
 		default:
 			return state;
 	}

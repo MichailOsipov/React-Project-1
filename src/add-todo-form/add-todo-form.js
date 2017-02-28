@@ -15,17 +15,18 @@ export default class AddTodoForm extends React.Component {
 	}
 	
 	handleSubmit(event){
-		this.props.onSubmit(this.state.nextTodoId, this.state.value);
+		//this.props.onSubmit(this.state.nextTodoId, this.state.value);
+		this.props.onSubmit(this.state.nextTodoId, this.input.value);
 
 		this.setState(prevState => ({
 			value: '',
-			nextTodoId: prevState.nextTodoId++
+			nextTodoId: prevState.nextTodoId + 1
 		}));
 	}
 	
 	render() {
 		return (
-			<form className="add-todo" onSubmit={this.handleSubmit}>
+			/*<form className="add-todo" onSubmit={this.handleSubmit}>
 				<input 
 					className="add-todo-input" 
 					type="text" value={this.state.value} 
@@ -33,7 +34,15 @@ export default class AddTodoForm extends React.Component {
 					placeholder="What should be done?"
 				/>
 				<input type="submit" value="Add" />
-			</form>
+			</form>*/
+			<div>
+				<input ref={node => {
+					this.input = node;
+				}} />
+				<button onClick={this.handleSubmit}>
+				 Add Todo
+				</button>
+			</div>
 		);
 	}
 }
