@@ -1,4 +1,4 @@
-.task-text-block {
+.todo-text-block {
    display: inline-block;
    word-wrap: break-word;
    width: 150px;
@@ -6,10 +6,10 @@
    margin-left: 20px;
    margin-right: 20px;
 }
-.task > input {
+.todo > input {
    width: 120px;
 }
-.task {
+.todo {
 	margin-bottom: 20px;
 	border-bottom: 2px;
 }

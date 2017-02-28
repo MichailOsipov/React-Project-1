@@ -5,6 +5,7 @@
     "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-2": "^6.22.0",
     "css-loader": "^0.26.1",
     "eslint": "^3.15.0",
     "eslint-config-airbnb": "^14.1.0",
@@ -16,6 +17,8 @@
     "node-sass": "^4.2.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-redux": "^5.0.2",
+    "redux": "^3.6.0",
     "resolve-url-loader": "^1.6.1",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
@@ -27,10 +30,21 @@
     "server": "./node_modules/.bin/webpack-dev-server"
   },
   "browser": {
-    "to-do-list": "./src/to-do-list/to-do-list",
-    "task-list": "./src/task-list/task-list",
-    "task": "./src/task/task",
-    "filter": "./src/filter/filter",
-    "add-task-form": "./src/add-task-form/add-task-form"
+    "app": "./src/app/app",
+    "visible-todo-list": "./src/visible-todo-list/visible-todo-list",
+    "todo-list": "./src/todo-list/todo-list",
+    "todo": "./src/todo/todo",
+    "footer": "./src/footer/footer",
+    "filter-link": "./src/filter-link/filter-link",
+    "link": "./src/link/link",
+    "add-todo": "./src/add-todo/add-todo",
+    "add-todo-form": "./src/add-todo-form/add-todo-form",
+    "visibility-filter-reducer": "./src/visibility-filter-reducer/visibility-filter-reducer",
+    "todo-reducer": "./src/todo-reducer/todo-reducer",
+    "todo-app": "./src/todo-app/todo-app"
+  },
+  "dependencies": {
+    "react-redux": "^5.0.2",
+    "redux": "^3.6.0"
   }
 }

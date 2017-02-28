@@ -1,9 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ToDoList from 'to-do-list';
+import App from 'app';
 import './main.scss';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import todoApp from 'todo-app';
+
+let store = createStore(todoApp);
 
 ReactDOM.render(
-	<ToDoList/>,
+	<Provider store={store}>
+		<App />
+	</Provider>,
 	document.getElementById('root')
 );
