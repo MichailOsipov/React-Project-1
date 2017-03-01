@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './footer.scss';
 import FilterLink from 'filter-link';
+import './footer.scss';
 
 export default class Footer extends React.Component {
 	constructor(props){
 		super(props);
 	}
-	//добавь тип уже используемого фильтра
+	
 	render() {
 		return (
-			<div className="footer">
+			<div className="footer todo-list__footer">
 				<FilterLink 
 					filter='SHOW_ALL'
 				>

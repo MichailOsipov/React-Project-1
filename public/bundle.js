@@ -58,13 +58,11 @@
 	
 	var _app2 = _interopRequireDefault(_app);
 	
-	__webpack_require__(243);
-	
 	var _reactRedux = __webpack_require__(187);
 	
 	var _redux = __webpack_require__(198);
 	
-	var _todoApp = __webpack_require__(244);
+	var _todoApp = __webpack_require__(245);
 	
 	var _todoApp2 = _interopRequireDefault(_todoApp);
 	
@@ -21827,6 +21825,8 @@
 	
 	var _footer2 = _interopRequireDefault(_footer);
 	
+	__webpack_require__(244);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21849,7 +21849,7 @@
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					{ className: 'todo-list' },
+					{ className: 'app' },
 					_react2.default.createElement(_addTodo2.default, null),
 					_react2.default.createElement(_visibleTodoList2.default, null),
 					_react2.default.createElement(_footer2.default, null)
@@ -21972,14 +21972,15 @@
 			value: function render() {
 				return _react2.default.createElement(
 					'form',
-					{ className: 'add-todo', onSubmit: this.handleSubmit },
+					{
+						className: 'add-todo-form app__add-todo-form',
+						onSubmit: this.handleSubmit },
 					_react2.default.createElement('input', {
-						className: 'add-todo-input',
+						className: 'add-todo-form_input',
 						type: 'text', value: this.state.value,
 						onChange: this.handleChange,
 						placeholder: 'What should be done?'
-					}),
-					_react2.default.createElement('input', { type: 'submit', value: 'Add' })
+					})
 				);
 			}
 		}]);
@@ -24578,50 +24579,6 @@
 	var VisibleTodoList = (0, _reactRedux.connect)(mapStateToTodoListProps, mapDispatchToTodoListProps)(_todoList2.default);
 	
 	exports.default = VisibleTodoList;
-	
-	/*export default class VisibleTodoList extends React.Component {
-		constructor(props){
-			super(props);
-			this.getVisibleTodos= this.getVisibleTodos.bind(this);
-		}
-		
-		componentDidMount() {
-			this.unsubscribe = store.subscribe(() =>
-				this.forceUpdate()
-			);
-		}
-
-		componentWillUnmount() {
-			this.unsubscribe();
-		}
-		
-		deleteTodo(id){
-			let newTasksList = this.state.tasks.slice();
-			for(let i=0;i<newTasksList.length;i++){
-				if(newTasksList[i].id==id){
-					newTasksList.splice(i,1);
-					break;
-				}
-			}
-			this.setState({
-				tasks: newTasksList
-			});
-		}
-	/*	
-		render() {		
-			const props = this.props;
-			const state = store.getState();
-			
-			return (
-				<TodoList
-					todos = {
-						this.getVisibleTodos(state.todos, state.visibilityFilter)
-					}
-					
-				/>		
-			);
-		}
-	}*/
 
 /***/ },
 /* 236 */
@@ -24673,7 +24630,7 @@
 	
 				return _react2.default.createElement(
 					'div',
-					{ className: 'todo-list' },
+					null,
 					this.props.todos.map(function (todo) {
 						return _react2.default.createElement(_todo2.default, _extends({
 							key: todo.id
@@ -24733,17 +24690,23 @@
 	
 			var _this = _possibleConstructorReturn(this, (Todo.__proto__ || Object.getPrototypeOf(Todo)).call(this, props));
 	
-			_this.getTextClass = _this.getTextClass.bind(_this);
+			_this.generateCompletedTodoClassName = _this.generateCompletedTodoClassName.bind(_this);
+			_this.generateCompletedAddButtonClassName = _this.generateCompletedAddButtonClassName.bind(_this);
 			return _this;
 		}
-		//исправь тут
-	
+		//this.props.completed
 	
 		_createClass(Todo, [{
-			key: 'getTextClass',
-			value: function getTextClass() {
-				var initialClassName = "todo-text-block";
-				return !this.props.completed ? initialClassName : initialClassName + " line-through";
+			key: 'generateCompletedTodoClassName',
+			value: function generateCompletedTodoClassName() {
+				var className = "content todo__content";
+				return this.props.completed ? className + " todo__content_completed" : className;
+			}
+		}, {
+			key: 'generateCompletedAddButtonClassName',
+			value: function generateCompletedAddButtonClassName() {
+				var className = "button-icon button-opacity todo__add-button";
+				return this.props.completed ? className + " add-button-completed" : className + " add-button-uncompleted";
 			}
 		}, {
 			key: 'render',
@@ -24752,21 +24715,21 @@
 					'div',
 					{ className: 'todo' },
 					_react2.default.createElement('input', {
+						className: this.generateCompletedAddButtonClassName(),
 						type: 'button',
 						onClick: this.props.onClickChangeStatus,
-						value: !this.props.completed ? 'set as Complete' : 'set as Active'
+						value: ''
 					}),
 					_react2.default.createElement(
 						'div',
-						{
-							className: this.getTextClass()
-						},
+						{ className: this.generateCompletedTodoClassName() },
 						this.props.text
 					),
 					_react2.default.createElement('input', {
+						className: 'button-icon button-opacity remove-button todo__remove-button',
 						type: 'button',
 						onClick: this.props.onClickDelete,
-						value: 'Delete'
+						value: ''
 					})
 				);
 			}
@@ -24803,11 +24766,11 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	__webpack_require__(240);
-	
-	var _filterLink = __webpack_require__(241);
+	var _filterLink = __webpack_require__(240);
 	
 	var _filterLink2 = _interopRequireDefault(_filterLink);
+	
+	__webpack_require__(243);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -24825,15 +24788,13 @@
 	
 			return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).call(this, props));
 		}
-		//добавь тип уже используемого фильтра
-	
 	
 		_createClass(Footer, [{
 			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					{ className: 'footer' },
+					{ className: 'footer todo-list__footer' },
 					_react2.default.createElement(
 						_filterLink2.default,
 						{
@@ -24866,18 +24827,12 @@
 
 /***/ },
 /* 240 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+		value: true
 	});
 	
 	var _react = __webpack_require__(1);
@@ -24888,7 +24843,7 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _link = __webpack_require__(242);
+	var _link = __webpack_require__(241);
 	
 	var _link2 = _interopRequireDefault(_link);
 	
@@ -24897,57 +24852,28 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var mapStateToLinkProps = function mapStateToLinkProps(state, ownProps) {
-	  return {
-	    active: ownProps.filter === state.visibilityFilter
-	  };
+		return {
+			active: ownProps.filter === state.visibilityFilter
+		};
 	};
 	
 	var mapDispatchToLinkProps = function mapDispatchToLinkProps(dispatch, ownProps) {
-	  return {
-	    onClick: function onClick() {
-	      dispatch({
-	        type: 'SET_VISIBILITY_FILTER',
-	        filter: ownProps.filter
-	      });
-	    }
-	  };
+		return {
+			onClick: function onClick() {
+				dispatch({
+					type: 'SET_VISIBILITY_FILTER',
+					filter: ownProps.filter
+				});
+			}
+		};
 	};
 	
 	var FilterLink = (0, _reactRedux.connect)(mapStateToLinkProps, mapDispatchToLinkProps)(_link2.default);
 	
 	exports.default = FilterLink;
-	/*export default class FilterLink extends Component {
-	  componentDidMount() {
-	    this.unsubscribe = Store.subscribe(() =>
-	      this.forceUpdate()
-	    );
-	  }
-
-	  componentWillUnmount() {
-	    this.unsubscribe();
-	  }
-
-	  render() {
-	    const props = this.props;
-	    const state = store.getState();
-
-	    return (
-	      <Link
-	        active={
-	          props.filter ===
-	          state.visibilityFilter
-	        }
-	        onClick={
-	        }
-	      >
-	        {props.children}
-	      </Link>
-	    );
-	  }
-	}*/
 
 /***/ },
-/* 242 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24965,6 +24891,8 @@
 	var _reactDom = __webpack_require__(32);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	__webpack_require__(242);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -24992,7 +24920,10 @@
 					//this.props.active ???
 					_react2.default.createElement(
 						'a',
-						{ href: '#', onClick: function onClick(e) {
+						{
+							href: '#',
+							className: ["link", "footer__link", this.props.active ? "link_active" : ""].join(' '),
+							onClick: function onClick(e) {
 								e.preventDefault();
 								_this2.props.onClick();
 							} },
@@ -25008,6 +24939,12 @@
 	exports.default = Link;
 
 /***/ },
+/* 242 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
 /* 243 */
 /***/ function(module, exports) {
 
@@ -25015,6 +24952,12 @@
 
 /***/ },
 /* 244 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25023,11 +24966,11 @@
 		value: true
 	});
 	
-	var _todoReducer = __webpack_require__(245);
+	var _todoReducer = __webpack_require__(246);
 	
 	var _todoReducer2 = _interopRequireDefault(_todoReducer);
 	
-	var _visibilityFilterReducer = __webpack_require__(246);
+	var _visibilityFilterReducer = __webpack_require__(247);
 	
 	var _visibilityFilterReducer2 = _interopRequireDefault(_visibilityFilterReducer);
 	
@@ -25038,23 +24981,12 @@
 	var todoApp = (0, _redux.combineReducers)({
 		todos: _todoReducer2.default,
 		visibilityFilter: _visibilityFilterReducer2.default
-	}); /*const todoApp = (state = {}, action) => {
-	    	return {
-	    		todo: todos(
-	    			state.todos,
-	    			action
-	    		),
-	    		visibilityFilter: visibilityFilter(
-	    			state.visibilityFilter,
-	    			action
-	    		)
-	    	};
-	    };*/
+	});
 	
 	exports.default = todoApp;
 
 /***/ },
-/* 245 */
+/* 246 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -25116,7 +25048,7 @@
 	exports.default = todosReducer;
 
 /***/ },
-/* 246 */
+/* 247 */
 /***/ function(module, exports) {
 
 	'use strict';

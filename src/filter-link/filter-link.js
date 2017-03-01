@@ -26,32 +26,3 @@ const FilterLink = connect(
 )(Link);
 
 export default FilterLink;
-/*export default class FilterLink extends Component {
-  componentDidMount() {
-    this.unsubscribe = Store.subscribe(() =>
-      this.forceUpdate()
-    );
-  }
-
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
-
-  render() {
-    const props = this.props;
-    const state = store.getState();
-
-    return (
-      <Link
-        active={
-          props.filter ===
-          state.visibilityFilter
-        }
-        onClick={
-        }
-      >
-        {props.children}
-      </Link>
-    );
-  }
-}*/

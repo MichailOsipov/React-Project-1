@@ -3,33 +3,39 @@ import ReactDOM from 'react-dom';
 import './todo.scss';
 
 export default class Todo extends React.Component {
-	constructor(props){
+	constructor(props) {
 		super(props);
-		this.getTextClass = this.getTextClass.bind(this);
+		this.generateCompletedTodoClassName = this.generateCompletedTodoClassName.bind(this);
+		this.generateCompletedAddButtonClassName = this.generateCompletedAddButtonClassName.bind(this);
 	}
-	//исправь тут
-	getTextClass() {
-		let initialClassName = "todo-text-block";		
-		return !this.props.completed ? initialClassName : initialClassName + " line-through";
+	//this.props.completed
+	
+	generateCompletedTodoClassName() {
+		let className = "content todo__content";
+		return this.props.completed ? className + " todo__content_completed" : className;
+	}
+	generateCompletedAddButtonClassName() {
+		let className = "button-icon button-opacity todo__add-button";
+		return this.props.completed ? className + " add-button-completed" : className + " add-button-uncompleted";
 	}
 	
 	render() {
 		return (
 			<div className="todo">
-				<input 
+				<input
+					className={this.generateCompletedAddButtonClassName()}
 					type="button" 
 					onClick={this.props.onClickChangeStatus} 
-					value={!this.props.completed ? 'set as Complete' : 'set as Active'}
+					value=""
 				/>
-				<div 
-				className={this.getTextClass()}
-				>
+				<div className={this.generateCompletedTodoClassName()}>
 					{this.props.text}
 				</div>
-				<input 
+				<input
+					className="button-icon button-opacity remove-button todo__remove-button"
 					type="button" 
 					onClick={this.props.onClickDelete} 
-					value="Delete"
+					value=""
 				/>
 			</div>
 		);

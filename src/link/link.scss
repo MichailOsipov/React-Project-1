@@ -1,0 +1,19 @@
+.link {
+	border: 1px solid transparent;
+	border-radius: 3px;
+	padding: 1px 5px;
+	font-family: Arial;
+	text-decoration: none;
+	color: #231E16;
+}
+.link:hover {
+	border: 1px solid #E1D4BC;
+	border-radius: 3px;
+}
+.link_active {
+	border: 1px solid #CBB48B;
+	border-radius: 3px;
+}
+.footer__link {
+	margin-right: 20px;
+}

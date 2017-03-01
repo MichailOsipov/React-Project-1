@@ -1,6 +1,15 @@
-.add-task{
-	margin-bottom: 15px;
+.add-todo-form {	
+	border-bottom: 1px solid grey;
+	font-family: Arial;	
 }
-.add-task-input{
-	width: 390px;
+.app__add-todo-form {
+	padding-top: 10px;	
+	margin-bottom: 10px;
+}
+.add-todo-form_input {
+	margin-left: 20px;
+	height: 65px;
+	font-size: 24px;
+	border: none;
+	outline: none;
 }

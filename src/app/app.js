@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import AddTodo from 'add-todo';
 import VisibleTodoList from 'visible-todo-list';
 import Footer from 'footer';
+import './app.scss';
 
 export default class App extends React.Component {
 	constructor(props){
@@ -11,7 +12,7 @@ export default class App extends React.Component {
 	
 	render() {
 		return (
-			<div className="todo-list">
+			<div className="app">
 				<AddTodo />
 				<VisibleTodoList />
 				<Footer />
