@@ -1,0 +1,132 @@
+.add-todo-form {
+  border-bottom: 1px solid grey;
+  font-family: Arial;
+}
+
+.app__add-todo-form {
+  padding-top: 10px;
+  margin-bottom: 10px;
+}
+
+.add-todo-form_input {
+  margin-left: 20px;
+  height: 65px;
+  font-size: 24px;
+  border: none;
+  outline: none;
+}
+
+.todo {
+  display: block;
+  position: relative;
+  height: 65px;
+  border-bottom: 1px solid grey;
+}
+
+.content {
+  font-family: Arial;
+  font-size: 24px;
+}
+
+.todo__content {
+  display: inline-block;
+  position: absolute;
+  margin-left: 15px;
+  margin-top: 20px;
+}
+
+.todo__content_completed {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+.button-icon {
+  background: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  outline: none;
+}
+
+.button-opacity {
+  opacity: 0.75;
+}
+
+.button-opacity:hover {
+  opacity: 1;
+}
+
+.add-button-completed {
+  background-image: url(9b2a91dd57bb53b983abbadd7e014271.svg);
+  width: 37px;
+  height: 48px;
+}
+
+.add-button-uncompleted {
+  background-image: url(2f62889b09ade9f0903f5e7f7166c626.svg);
+  background-size: 37px 37px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 37px;
+  height: 48px;
+}
+
+.todo__add-button {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.remove-button {
+  background: transparent;
+  background-image: url(41be58deae51feff0d52b23ba55267bb.svg);
+  background-size: 15px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 37px;
+  height: 48px;
+  border: none;
+  outline: none;
+}
+
+.todo__remove-button {
+  position: absolute;
+  right: 10px;
+}
+
+.link {
+  border: 1px solid transparent;
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-family: Arial;
+  text-decoration: none;
+  color: #231E16;
+}
+
+.link:hover {
+  border: 1px solid #E1D4BC;
+  border-radius: 3px;
+}
+
+.link_active {
+  border: 1px solid #CBB48B;
+  border-radius: 3px;
+}
+
+.footer__link {
+  margin-right: 20px;
+}
+
+.todo-list__footer {
+  margin-top: 20px;
+  margin-left: 20px;
+  height: 35px;
+}
+
+.app {
+  max-width: 600px;
+  box-shadow: 3px 3px 3px 3px #ccc;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+
+/*# sourceMappingURL=styles.css.map*/
